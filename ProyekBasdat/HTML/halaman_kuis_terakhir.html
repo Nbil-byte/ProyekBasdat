@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[JUDUL KUIS] - Liquid</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar-desc-kuis">
+        <img class="logo-liquid-desc-kuis" src="assets/logo liquid.png" alt="LIQUID Logo">
+        <div class="navigation-links">
+            <a href="#" class="navigation-link">Dashboard</a>
+            <a href="#" class="navigation-link">Grades</a>
+        </div>
+        <div class="profile-info">
+            <img class="profile-picture" src="assets/user.png" alt="Profile Picture">
+            <div class="profile-details">
+                <div class="full-name">[NAMA USER]</div>
+                <div class="student-number">[NIM USER]</div>
+                <div class="jurusan">[JURUSAN USER]</div>
+            </div>
+        </div>
+        <div id="profilePopup">
+            <!-- Konten pop-up, seperti informasi profil -->
+            <img class="popup-profile-picture" src="assets/user.png" alt="Profile Picture">
+            <div class="popup-profile-details">
+                <div class="full-name">[NAMA USER]</div>
+                <div class="student-number">[NIM USER]</div>
+                <div class="jurusan">[JURUSAN USER]</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-desc-kuis">
+        <div class="quiz-logo-judul-desc">
+            <img src="assets/logo kuis.png" alt="Logo Kuis" width="64" height="64">
+            <div class="quiz-details-judul-desc">
+                <h3>[JUDUL KUIS]</h3>
+                <p>[KODE KUIS] - [NAMA MATKUL]</p>
+            </div>
+        </div>
+        <div class="judul-konten-desc-kuis">
+            <div class="nomor-kuis">
+                <p>Question ?</p>
+            </div>
+            <div class="soal-dan-pg">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim, commodi placeat quae dolores, corporis facere atque ducimus illo architecto accusantium, nemo quibusdam asperiores! Ut possimus beatae eveniet unde dolores?</p>
+                
+                <!-- Opsi Pilihan Ganda -->
+                <div class="options">
+                    <label class="option-container">
+                        <input type="radio" name="answer" value="A">
+                        <span class="checkmark"></span>
+                        Option A
+                    </label>
+                    <label class="option-container">
+                        <input type="radio" name="answer" value="B">
+                        <span class="checkmark"></span>
+                        Option B
+                    </label>
+                    <label class="option-container">
+                        <input type="radio" name="answer" value="C">
+                        <span class="checkmark"></span>
+                        Option C
+                    </label>
+                    <label class="option-container">
+                        <input type="radio" name="answer" value="D">
+                        <span class="checkmark"></span>
+                        Option D
+                    </label>
+                </div>
+                
+                <!-- Clear Choice Button -->
+                <button class="clear-choice-btn" onclick="clearChoice()">Clear my choice</button>
+                <button class="previous-page-btn" style="position: absolute; bottom: 20px; left: 20px;">Previous page</button>
+                <button class="finish-quiz-btn" style="position: absolute; bottom: 20px; right: 20px;">Finish Quiz</button>
+            </div>
+        </div>
+        <div></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Fungsi untuk membuka pop-up
+        function openPopup() {
+            var popup = document.getElementById('profilePopup');
+            popup.style.display = 'block';
+        }
+    
+        // Fungsi untuk menutup pop-up
+        function closePopup() {
+            var popup = document.getElementById('profilePopup');
+            popup.style.display = 'none';
+        }
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            var profilePicture = document.querySelector('.profile-picture');
+    
+            profilePicture.addEventListener('click', function () {
+                openPopup();
+            });
+    
+            // Menambahkan event listener untuk menutup pop-up saat kursor berada di luar pop-up
+            document.addEventListener('click', function (event) {
+                var popup = document.getElementById('profilePopup');
+                if (!profilePicture.contains(event.target) && !popup.contains(event.target)) {
+                    closePopup();
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fungsi untuk menampilkan atau menyembunyikan tombol Clear my choice
+            function updateClearChoiceBtn() {
+                var options = document.querySelectorAll('input[name="answer"]:checked');
+                var clearChoiceBtn = document.querySelector('.clear-choice-btn');
+    
+                if (options.length > 0) {
+                    clearChoiceBtn.style.display = 'block';
+                } else {
+                    clearChoiceBtn.style.display = 'none';
+                }
+
+            }
+    
+            // Fungsi untuk membersihkan pilihan dan menyembunyikan tombol Clear my choice
+            function clearChoice() {
+                var options = document.querySelectorAll('input[name="answer"]');
+                options.forEach(function (option) {
+                    option.checked = false;
+                });
+    
+                // Sembunyikan tombol Clear my choice
+                var clearChoiceBtn = document.querySelector('.clear-choice-btn');
+                clearChoiceBtn.style.display = 'none';
+            }
+    
+            // Tambahkan event listener untuk setiap opsi
+            var options = document.querySelectorAll('input[name="answer"]');
+            options.forEach(function (option) {
+                option.addEventListener('change', updateClearChoiceBtn);
+            });
+    
+            // Tambahkan event listener untuk tombol Clear my choice
+            var clearChoiceBtn = document.querySelector('.clear-choice-btn');
+            clearChoiceBtn.addEventListener('click', clearChoice);
+        });
+    </script>
+</body>
+</html>
