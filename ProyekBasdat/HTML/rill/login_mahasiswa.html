@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Student - Liquid</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="judul-pojok">
+            <h1>LIQUID</h1>
+        </div>
+        <img class="logo-liquid-login" src="assets/logo liquid.png" alt="LIQUID Logo" class="logo-img">
+    </nav>
+    <div class="container main-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h1 class="welcome-login">Welcome Student!</h1>
+                        <p class="login-to-acc">Login to your account</p>
+                        <form action="proses_login_mahasiswa.php" method="post">
+                            <div class="form-group">
+                                <label for="username_mahasiswa">Username:</label>
+                                <input type="text" class="form-control" id="username_mahasiswa" name="username_mahasiswa" placeholder="Enter your username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password_mahasiswa">Password:</label>
+                                <input type="password" class="form-control" id="password_mahasiswa" name="password_mahasiswa" placeholder="Enter your password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        <p class="belum-daftar">Don't have an account? <a href="register_mahasiswa.php">Please register</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

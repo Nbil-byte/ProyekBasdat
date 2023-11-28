@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Student - Liquid</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img class="logo-liquid-sidebar" src="assets/logo liquid.png" alt="LIQUID Logo">
+            <div class="liquid-text-sidebar">LIQUID</div>
+        </div>
+        <div class="sidebar-menu">
+            <div class="menu-item active">
+                <img src="assets/dashboard logo.svg" alt="Dashboard Icon">
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item">
+                <img src="assets/grades logo.svg" alt="Grades Icon">
+                <span>Grades</span>
+            </div>
+        </div>
+        <div class="logout">
+            <img src="assets/logo logout.svg" alt="Logout Icon">
+            <span>Logout</span>
+        </div>
+        <div class="sidebar-right">
+            <div class="calendar-title">Calendar</div>
+            <div class="calendar-widget">
+                <!-- Widget kalender disini -->
+                <!-- Anda dapat menggunakan elemen HTML atau mengintegrasikan plugin kalender -->
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <div class="welcome-back">
+                WELCOME BACK!
+            </div>
+            <div class="profile-section">
+                <input type="text" class="search-bar" placeholder="Find Your Quiz">
+                <div class="profile-info">
+                    <img class="profile-picture" src="assets/user.png" alt="Profile Picture">
+                    <div class="profile-details">
+                        <div class="full-name">[NAMA USER]</div>
+                        <div class="student-number">[NIM USER]</div>
+                        <div class="jurusan">[JURUSAN USER]</div>
+                    </div>
+                </div>
+                <div id="profilePopup">
+                    <!-- Konten pop-up, seperti informasi profil -->
+                    <img class="popup-profile-picture" src="assets/user.png" alt="Profile Picture">
+                    <div class="popup-profile-details">
+                        <div class="full-name">[NAMA USER]</div>
+                        <div class="student-number">[NIM USER]</div>
+                        <div class="jurusan">[JURUSAN USER]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="available-quiz">
+                Available Quiz:
+                <div class="quiz-container">
+                    <a href="desc_kuis_mahasiswa.php" class="quiz-item">
+        <div class="quiz-logo">
+            <img src="assets/logo kuis.png" alt="Logo Kuis" width="64" height="64">
+        </div>
+        <div class="quiz-details">
+            <h3>[JUDUL KUIS]</h3>
+            <p>[KODE KUIS] - [NAMA MATKUL]</p>
+        </div>
+    </a>
+                    <!-- Tambahkan elemen quiz-item sesuai dengan jumlah kuis yang ingin ditampilkan -->
+                  </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Fungsi untuk membuka pop-up
+        function openPopup() {
+            var popup = document.getElementById('profilePopup');
+            popup.style.display = 'block';
+        }
+    
+        // Fungsi untuk menutup pop-up
+        function closePopup() {
+            var popup = document.getElementById('profilePopup');
+            popup.style.display = 'none';
+        }
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            var profilePicture = document.querySelector('.profile-picture');
+    
+            profilePicture.addEventListener('click', function () {
+                openPopup();
+            });
+    
+            // Menambahkan event listener untuk menutup pop-up saat kursor berada di luar pop-up
+            document.addEventListener('click', function (event) {
+                var popup = document.getElementById('profilePopup');
+                if (!profilePicture.contains(event.target) && !popup.contains(event.target)) {
+                    closePopup();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+

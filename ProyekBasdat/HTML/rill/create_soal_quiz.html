@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz - Liquid</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar-desc-kuis">
+        <img class="logo-liquid-desc-kuis" src="assets/logo liquid.png" alt="LIQUID Logo">
+        <div class="navigation-links">
+            <a href="#" class="navigation-link">Dashboard</a>
+            <a href="#" class="navigation-link">Scoreboard</a>
+        </div>
+        <div class="profile-info">
+            <img class="profile-picture" src="assets/user.png" alt="Profile Picture">
+            <div class="profile-details">
+                <div class="full-name">[NAMA USER]</div>
+                <div class="staff-number">[NIP USER]</div>
+                <div class="jurusan">[JURUSAN USER]</div>
+            </div>
+        </div>
+        <div id="profilePopup">
+            <!-- Konten pop-up, seperti informasi profil -->
+            <img class="popup-profile-picture" src="assets/user.png" alt="Profile Picture">
+            <div class="popup-profile-details">
+                <div class="full-name">[NAMA USER]</div>
+                <div class="staff-number">[NIP USER]</div>
+                <div class="jurusan">[JURUSAN USER]</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content-desc-kuis">
+        <div class="judul-create-new">
+            <h3>Create New Quiz</h3>
+        </div>
+
+        <!-- Form Create Quiz -->
+        <form>
+            <div class="form-group">
+                <label for="judulKuis">Judul Kuis</label>
+                <input type="text" class="form-control" id="judulKuis" placeholder="Masukkan Judul Kuis" required>
+            </div>
+
+            <div class="form-group">
+                <label for="deadline">Deadline</label>
+                <input type="datetime-local" class="form-control" id="deadline" required>
+            </div>
+
+            <div class="form-group">
+                <label for="deskripsiKuis">Deskripsi Kuis</label>
+                <textarea class="form-control" id="deskripsiKuis" rows="4" placeholder="Masukkan Deskripsi Kuis"></textarea>
+            </div>
+            <div class="form-group">
+                <h5>Add Question</h5>
+
+                <!-- Input untuk Soal -->
+                <label for="soal">Soal</label>
+                <textarea class="form-control" id="soal" rows="3" placeholder="Masukkan Soal" required></textarea>
+
+                <!-- Input untuk Pilihan Jawaban -->
+                <label for="pilihanA">Pilihan A</label>
+                <input type="text" class="form-control" id="pilihanA" placeholder="Pilihan A" required>
+
+                <label for="pilihanB">Pilihan B</label>
+                <input type="text" class="form-control" id="pilihanB" placeholder="Pilihan B" required>
+
+                <label for="pilihanC">Pilihan C</label>
+                <input type="text" class="form-control" id="pilihanC" placeholder="Pilihan C" required>
+
+                <label for="kuncijawaban">Kunci Jawaban</label>
+                <input type="text" class="form-control" id="kuncijawaban" placeholder="Masukkan jawaban benar" required>
+
+                <label for="poinkuis">Poin</label>
+                <input type="text" class="form-control" id="poinkuis" placeholder="Masukkan poin soal" required>
+            </div>
+
+            <button type="button" class="add-question-btn" id="addQuestionBtn">Add Question</button>
+        </form>
+
+        <!-- List Question Section -->
+        <div class="list-question-section">
+            <h5>List Question</h5>
+            <ul id="questionList"></ul>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const addQuestionBtn = document.getElementById('addQuestionBtn');
+    const listQuestions = document.getElementById('questionList');
+
+    let questionCount = 1;
+
+    addQuestionBtn.addEventListener('click', function () {
+        questionCount++;
+        addQuestion(questionCount);
+    });
+
+    function addQuestion(questionNumber) {
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('question-item');
+
+        const questionLabel = document.createElement('label');
+        questionLabel.innerText = 'Question ' + questionNumber;
+
+        const questionInput = document.createElement('p');
+        questionInput.innerText = 'Question: ' + document.getElementById('soal').value;
+
+        const optionA = document.createElement('p');
+        optionA.innerText = 'Option A: ' + document.getElementById('pilihanA').value;
+
+        const optionB = document.createElement('p');
+        optionB.innerText = 'Option B: ' + document.getElementById('pilihanB').value;
+
+        const optionC = document.createElement('p');
+        optionC.innerText = 'Option C: ' + document.getElementById('pilihanC').value;
+
+        const answerInput = document.createElement('p');
+        answerInput.innerText = 'Correct Answer: ' + document.getElementById('kuncijawaban').value;
+
+        const pointsInput = document.createElement('p');
+        pointsInput.innerText = 'Points: ' + document.getElementById('poinkuis').value;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.innerText = 'Delete';
+        deleteBtn.classList.add('delete-question-btn');
+        deleteBtn.addEventListener('click', function () {
+            questionDiv.remove();
+        });
+
+        questionDiv.appendChild(questionLabel);
+        questionDiv.appendChild(questionInput);
+        questionDiv.appendChild(optionA);
+        questionDiv.appendChild(optionB);
+        questionDiv.appendChild(optionC);
+        questionDiv.appendChild(answerInput);
+        questionDiv.appendChild(pointsInput);
+        questionDiv.appendChild(deleteBtn);
+
+        listQuestions.appendChild(questionDiv);
+    }
+});
+
+    </script>
+    <script>
+        // Fungsi untuk membuka pop-up
+        function openPopup() {
+            var popup = document.getElementById('profilePopup');
+            popup.style.display = 'block';
+        }
+    
+        // Fungsi untuk menutup pop-up
+        function closePopup() {
+            var popup = document.getElementById('profilePopup');
+            popup.style.display = 'none';
+        }
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            var profilePicture = document.querySelector('.profile-picture');
+    
+            profilePicture.addEventListener('click', function () {
+                openPopup();
+            });
+    
+            // Menambahkan event listener untuk menutup pop-up saat kursor berada di luar pop-up
+            document.addEventListener('click', function (event) {
+                var popup = document.getElementById('profilePopup');
+                if (!profilePicture.contains(event.target) && !popup.contains(event.target)) {
+                    closePopup();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

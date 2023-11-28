@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Register - Liquid</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="judul-pojok">
+            <h1>LIQUID</h1>
+        </div>
+        <img class="logo-liquid-login" src="assets/logo liquid.png" alt="LIQUID Logo" class="logo-img">
+        <div class="signin-button">
+            <button><a href="login_mahasiswa.php">Login</a></button>
+        </div>
+    </nav>
+    <div class="container main-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h1 class="welcome-login">Student Register</h1>
+                        <p class="login-to-acc">Please fill the form bellow</p>
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="username_mahasiswa">Username:</label>
+                                <input type="text" class="form-control" id="username_mahasiswa" name="username_mahasiswa" placeholder="Username must be your Student Number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password_mahasiswa">Password:</label>
+                                <input type="password" class="form-control" id="password_mahasiswa" name="password_mahasiswa" placeholder="Fill your Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama_mahasiswa">Name:</label>
+                                <input type="text" class="form-control" id="nama_mahasiswa" name="nama_mahasiswa"placeholder="Fill your Fullname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email_mahasiswa">Email:</label>
+                                <input type="email" class="form-control" id="email_mahasiswa" name="email_mahasiswa" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="jurusan_mahasiswa">Jurusan:</label>
+                                <input type="text" class="form-control" id="jurusan_mahasiswa" name="jurusan_mahasiswa" placeholder="Computer Science" required>
+                            </div>
+                            <button type="submit" name="tomboldaftar" class="btn btn-primary btn-block">Register</button>
+                        </form>
+                        <p class="mt-3 text-center">Do you have an account? <a href="login_mahasiswa.php">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
